@@ -1,1 +1,4 @@
 Backend/villagr/villagr/__pycache__
+Backend/villagr/db.sqlite3
+Backend/villagr/village_api/__pycache__
+Backend/villagr/village_api/migrations/__pycache__

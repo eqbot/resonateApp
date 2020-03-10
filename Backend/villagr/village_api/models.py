@@ -1,6 +1,6 @@
 from django.db import models
 from phone_field import PhoneField
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Person(models.Model):
@@ -11,9 +11,11 @@ class Person(models.Model):
 class Village(models.Model):
     description = models.CharField(max_length=128)
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class UserProfile(AbstractUser):
     leads_village = models.ForeignKey(Village, on_delete=models.SET_NULL, null=True)
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
 
 class AttendanceLog(models.Model):
     WEEKLYMEETING = 'WM'

@@ -1,2 +1,4 @@
 Django
 django-phone-field
+djangorestframework
+markdown

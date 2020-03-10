@@ -12,7 +12,7 @@ class Village(models.Model):
     description = models.CharField(max_length=128)
 
 class UserProfile(AbstractUser):
-    leads_village = models.ForeignKey(Village, on_delete=models.SET_NULL, null=True)
+    leads_village = models.ForeignKey(Village, on_delete=models.SET_NULL, null=True, related_name='leaders')
 
     class Meta(AbstractUser.Meta):
         swappable = 'AUTH_USER_MODEL'

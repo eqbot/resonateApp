@@ -14,3 +14,11 @@ class VillageViewSet(viewsets.ModelViewSet):
     queryset = Village.objects.all()
     serializer_class = VillageSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+#    def perform_create(self, serializer):
+#        serializer.save()
+#        print(serializer.data)
+#        for userid in serializer.data['leaders']:
+#            user = UserProfile.objects.get(pk = userid)
+#            user.leads_village = serializer.data['id']
+#            user.save()

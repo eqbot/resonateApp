@@ -11,7 +11,7 @@ class VillageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Village
-        fields = ['description', 'leaders']
+        fields = ['url', 'description', 'leaders']
 
     def create(self, validated_data):
         leaders = validated_data.pop('leaders')

@@ -16,13 +16,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from rest_framework_extensions.routers import ExtendedSimpleRouter
+
 from village_api import views
 
-router = routers.DefaultRouter()
+
+router = ExtendedSimpleRouter()
 router.register(r'users', views.UserProfileViewSet)
-router.register(r'villages', views.VillageViewSet)
-router.register(r'attendance', views.AttendanceLogViewSet)
+#router.register(r'villages', views.VillageViewSet)
+#router.register(r'attendance', views.AttendanceLogViewSet)
 router.register(r'person', views.PersonViewSet)
+
+village_router = router.register('villages', views.VillageViewSet, basename='village')
+village_router.register(
+    'attendance',
+    views.AttendanceLogViewSet,
+    basename='village-attendance',
+    parents_query_lookups=['village']
+)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -38,6 +38,13 @@ class AttendanceLogSerializer(serializers.HyperlinkedModelSerializer):
     """
     Serializes the Attendance Log model
     """
+    #village = serializers.HyperlinkedRelatedField(
+    #    many=False,
+    #    read_only=True,
+    #    allow_null=False,
+    #    view_name='villages'
+    #)
+
     class Meta:
         model = AttendanceLog
         fields = ['date', 'person', 'village']
@@ -48,4 +55,4 @@ class PersonSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = Person
-        fields = ['url','phone', 'name', 'discipled_by']
+        fields = ['url', 'phone', 'name', 'discipled_by']

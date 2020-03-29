@@ -1,4 +1,5 @@
 Django
 django-phone-field
 djangorestframework
+drf-extensions
 markdown

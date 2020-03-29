@@ -2,7 +2,7 @@
 Serializers to convert DB models into JSON
 """
 from rest_framework import serializers
-from village_api.models import UserProfile, Village, AttendanceLog
+from village_api.models import UserProfile, Village, AttendanceLog, Person
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
     """
@@ -41,3 +41,11 @@ class AttendanceLogSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = AttendanceLog
         fields = ['date', 'person', 'village']
+
+class PersonSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serializes the Person model
+    """
+    class Meta:
+        model = Person
+        fields = ['url','phone', 'name', 'discipled_by']

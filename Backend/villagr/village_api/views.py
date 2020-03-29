@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework import viewsets, permissions
-from village_api.models import UserProfile, Village, AttendanceLog
-from village_api.serializers import UserProfileSerializer, VillageSerializer, AttendanceLogSerializer
+from village_api.models import UserProfile, Village, AttendanceLog, Person
+from village_api.serializers import UserProfileSerializer, VillageSerializer, AttendanceLogSerializer, PersonSerializer
 
 # Create your views here.
 class UserProfileViewSet(viewsets.ModelViewSet):
@@ -19,10 +19,6 @@ class AttendanceLogViewSet(viewsets.ModelViewSet):
     queryset = AttendanceLog.objects.all()
     serializer_class = AttendanceLogSerializer
 
-#    def perform_create(self, serializer):
-#        serializer.save()
-#        print(serializer.data)
-#        for userid in serializer.data['leaders']:
-#            user = UserProfile.objects.get(pk = userid)
-#            user.leads_village = serializer.data['id']
-#            user.save()
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer

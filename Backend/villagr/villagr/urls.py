@@ -15,20 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework import routers
 from rest_framework_extensions.routers import ExtendedSimpleRouter
 
 from village_api import views
 
 
-router = ExtendedSimpleRouter()
-router.register(r'users', views.UserProfileViewSet)
-#router.register(r'villages', views.VillageViewSet)
-#router.register(r'attendance', views.AttendanceLogViewSet)
-router.register(r'person', views.PersonViewSet)
+ROUTER = ExtendedSimpleRouter()
+ROUTER.register(r'users', views.UserProfileViewSet)
+ROUTER.register(r'person', views.PersonViewSet)
 
-village_router = router.register('villages', views.VillageViewSet, basename='village')
-village_router.register(
+VILLAGE_ROUTER = ROUTER.register('villages', views.VillageViewSet, basename='village')
+VILLAGE_ROUTER.register(
     'attendance',
     views.AttendanceLogViewSet,
     basename='village-attendance',
@@ -36,7 +33,7 @@ village_router.register(
 )
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(ROUTER.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
 ]

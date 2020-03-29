@@ -21,6 +21,7 @@ from village_api import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserProfileViewSet)
 router.register(r'villages', views.VillageViewSet)
+router.register(r'attendance', views.AttendanceLogViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
